@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Tablet Sansung",
+      "price": 200
+    },
+    {
+      "name": "Produto de teste",
+      "price": 200,
+      "id": "gfLH3TQ"
+    },
+    {
+      "name": "Veio do formulário",
+      "price": "523",
+      "id": "UOEz0L7"
+    },
+    {
+      "name": "Produto de teste 2",
+      "price": 400,
+      "id": "VrlhYUA"
+    }
+  ]
+}
