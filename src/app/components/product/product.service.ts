@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar"
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { API_URL } from 'src/config/constants';
 import { Product } from './product.model';
 
@@ -29,7 +30,15 @@ export class ProductService {
   }
 
   storeProduct(product: Product): Observable<Product> {
-    return this.api.post<Product>(`${API_URL}/products`, product)
+    return this.api.post<Product>(`${API_URL}/products`, product).pipe(
+      map(obj => obj),
+      catchError((e) => this.errorHandler(e))
+    )
+  }
+
+  errorHandler(e: any): Observable<any> {
+    this.showMessage('Erro no cadastro do produto')
+    return EMPTY
   }
 
   getAll(): Observable<Product[]> {
